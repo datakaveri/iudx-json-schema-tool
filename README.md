@@ -1,19 +1,17 @@
 
 # JSON Schema Generator Tool for IUDX Datasets
 
-Execute the executable file: json_schema_generator.exe, which will open a UI for the user to feed in the IUDX catalogue against which the schema is to be generated.
+Run the python file: json_schema_generator.py, which will open a UI for the user to feed in the IUDX catalogue against which the schema is to be generated.
 
 ## Installation
 
 Install my-project 
 
 ```bash
-$ git clone https://github.com/Navin107/json_schema_generator_ui.git
-$ cd /path/to/the/json_schema_generator_ui
+$ git clone git@github.com:datakaveri/iudx-json-schema-tool.git
+$ cd /path/to/the/iudx-json-schema-tool
 $ pip install -r requirements.txt
-$ Run the setup.py script
-$ cd dist
-$ Run the json_schema_generator.exe
+$ Run the json_schema_generator.py
 ```
     
 ## Documentation
