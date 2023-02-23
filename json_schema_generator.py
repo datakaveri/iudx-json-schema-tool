@@ -7,6 +7,7 @@ from tkinter import filedialog
 import json
 import requests
 from tkinter import messagebox
+import copy
 
 get_path = os.getcwd()
 dirname = os.path.dirname(get_path)
@@ -565,9 +566,6 @@ class json_schema_generator_ui:
                 
         schema["properties"][key] = {}
         schema["properties"][key]["anyOf"] = []
-
-        append_null_dict = {}
-        append_null_dict["type"] = "null"
         
         append_dict_1 = {}
         append_dict_1["type"] = "object"
@@ -582,6 +580,9 @@ class json_schema_generator_ui:
                 append_dict_1["properties"][tsa_val] = {}
                 append_dict_1["properties"][tsa_val]["type"] = property_dict.get(property_type)
                 append_dict_1["required"].append(tsa_val)
+
+        append_null_dict = copy.deepcopy(append_dict_1)
+        append_null_dict["properties"]["instValue"]["type"] = "null"
 
         schema["properties"][key]["anyOf"] = []
         schema["properties"][key]["anyOf"].append(append_dict_1)
