@@ -385,17 +385,25 @@ class json_schema_generator_ui:
             and will be returned the updated schema
         '''
 
+        multipolygon = {}
+        multipolygon["type"] = "array"
+        multipolygon["items"] = {}
+        multipolygon["items"]["type"] = "array"
+        multipolygon["items"]["items"] = {}
+        multipolygon["items"]["items"]["type"] = "array"
+        multipolygon["items"]["items"]["items"] =  {}
+        multipolygon["items"]["items"]["items"]["type"] =  "array"
+        multipolygon["items"]["items"]["items"]["items"] = {}
+        multipolygon["items"]["items"]["items"]["items"]["type"] = "number"
+
         polygon = {}
-        polygon["type"] = "object"
-        polygon["properties"] = {}
-        polygon["properties"]["coordinates"] = {}
-        polygon["properties"]["coordinates"]["type"] = "array"
-        polygon["properties"]["coordinates"]["items"] = {}
-        polygon["properties"]["coordinates"]["items"]["type"] = "array"
-        polygon["properties"]["coordinates"]["items"]["items"] = {}
-        polygon["properties"]["coordinates"]["items"]["items"]["type"] = "array"
-        polygon["properties"]["coordinates"]["items"]["items"]["items"] =  {}
-        polygon["properties"]["coordinates"]["items"]["items"]["items"]["type"] =  "number"
+        polygon["type"] = "array"
+        polygon["items"] = {}
+        polygon["items"]["type"] = "array"
+        polygon["items"]["items"] = {}
+        polygon["items"]["items"]["type"] = "array"
+        polygon["items"]["items"]["items"] =  {}
+        polygon["items"]["items"]["items"]["type"] =  "number"
         
         point = {}
         point["type"] = "array"
@@ -412,12 +420,13 @@ class json_schema_generator_ui:
         coordinates_dict = {}
         coordinates_dict["type"] = "object"
         coordinates_dict["properties"] = {}
-        coordinates_dict["properties"]["coordinates"] = polygon
 
-          
         if location_type == "polygon":
             coordinates_dict["properties"]["coordinates"] = polygon
-            
+
+        elif location_type == "MultiPolygon":
+            coordinates_dict["properties"]["coordinates"] = multipolygon
+
         elif location_type == "LineString":
             coordinates_dict["properties"]["coordinates"] = line_string
 
